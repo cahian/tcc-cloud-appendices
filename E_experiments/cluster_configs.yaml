@@ -1,0 +1,51 @@
+balanced_100gb:
+  description: "Configuração utilizada nos experimentos de 100GB em produção"
+  master_instance_type: "m5.xlarge"
+  core_instance_type: "c5.2xlarge"
+  core_instance_count: 4
+  auto_scaling:
+    min_nodes: 2
+    max_nodes: 16
+    scale_up_threshold_cpu: 70
+    scale_down_threshold_cpu: 30
+  spark_settings:
+    spark.executor.memory: "12g"
+    spark.executor.cores: "4"
+    spark.dynamicAllocation.enabled: true
+    spark.sql.adaptive.enabled: true
+    spark.serializer: "org.apache.spark.serializer.KryoSerializer"
+
+high_throughput_1tb:
+  description: "Cluster dedicado para cargas de 1TB com throughput máximo"
+  master_instance_type: "m5.2xlarge"
+  core_instance_type: "c5.4xlarge"
+  core_instance_count: 16
+  auto_scaling:
+    min_nodes: 8
+    max_nodes: 32
+    scale_up_threshold_cpu: 65
+    scale_down_threshold_cpu: 25
+  spark_settings:
+    spark.executor.memory: "16g"
+    spark.executor.cores: "6"
+    spark.dynamicAllocation.enabled: true
+    spark.sql.adaptive.skewJoin.enabled: true
+    spark.sql.adaptive.localShuffleReader.enabled: true
+
+cost_optimized_spot:
+  description: "Ambiente para workloads recorrentes priorizando redução de custo"
+  master_instance_type: "m5.xlarge"
+  core_instance_type: "c5.2xlarge"
+  core_instance_market: "SPOT"
+  core_instance_count: 6
+  auto_scaling:
+    min_nodes: 2
+    max_nodes: 16
+    scale_up_threshold_cpu: 75
+    scale_down_threshold_cpu: 35
+  spark_settings:
+    spark.executor.memory: "10g"
+    spark.executor.cores: "4"
+    spark.dynamicAllocation.enabled: true
+    spark.shuffle.service.enabled: true
+    spark.sql.adaptive.enabled: true

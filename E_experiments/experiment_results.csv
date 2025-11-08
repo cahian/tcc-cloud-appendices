@@ -1,0 +1,11 @@
+framework,dataset_gb,nodes,time_min,cost_usd,throughput_gbps
+spark,10,4,28,4.20,0.59
+spark,100,8,245,36.75,0.68
+spark,1024,16,725,108.75,0.73
+spark,100,4,249.5,24.55,0.41
+hadoop,10,4,45,6.75,0.37
+hadoop,100,8,372,55.80,0.45
+hadoop,1024,16,1110,166.50,0.48
+bigquery,10,0,12,0.50,1.39
+bigquery,100,0,168,5.00,0.99
+bigquery,1024,0,534,50.00,0.93
